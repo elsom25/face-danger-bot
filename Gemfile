@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "5.0.0.beta4"
+gem "rails", "~> 4.2.5"
 gem "slim"
 
 gem "slim-rails"

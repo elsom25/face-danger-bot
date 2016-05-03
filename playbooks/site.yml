@@ -1,0 +1,43 @@
+---
+- name: machine dependencies
+  hosts: all
+  become: yes
+  tasks:
+    - name: update apt-get
+      apt: update_cache=yes cache_valid_time=300
+
+    - name: install required software
+      apt: name={{ item }} state=latest
+      with_items:
+        - curl
+        - vim
+        - nodejs
+        - libpq-dev
+
+    - name: link nodejs
+      file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+      become: yes
+
+    - name: set default PWD
+      lineinfile: dest="/home/vagrant/.bashrc" line="cd {{ app_path }}" create=yes
+
+- name: deploy and configure rvm
+  hosts: all
+  become: yes
+  vars:
+    rvm1_rubies:
+      - "ruby-2.3.0"
+    rvm1_install_flags: "--auto-dotfiles"
+  roles:
+    - rvm_io.rvm1-ruby
+
+- name: install rails dependencies
+  hosts: all
+  tasks:
+    - name: install dependencies
+      bundler: state=present exclude_groups=production chdir="{{ app_path }}"
+
+    - name: migrate database
+      shell: "bundle exec rake db:migrate"
+      args:
+        chdir: "{{ app_path }}"
