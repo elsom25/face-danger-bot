@@ -34,5 +34,5 @@ the machine via `vagrant halt` when you're done working.
 
 ```bash
 vagrant ssh
-rails s
+bundle exec rails s -b 0.0.0.0
 ```
