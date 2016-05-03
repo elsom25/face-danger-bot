@@ -7,7 +7,8 @@ module Responders
     end
 
     def handle
-      text_response('Hello!')
+      MIXPANEL.track(user.username, "Default")
+      default_response
     end
   end
 end

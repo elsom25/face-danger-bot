@@ -1,4 +1,6 @@
 class ApplicationHandler < Bot::Handler
+  use Responders::Reset
+  use Responders::Introduction
   use Responders::Default
 
   def user_for(message)
