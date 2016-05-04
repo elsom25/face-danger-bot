@@ -10,7 +10,7 @@ module Responders
       user.update! introduced: true
       MIXPANEL.track(user.username, "Introduced")
 
-      reexecute_with(text_response("Hi! I'm Danger Face Bot ☠"))
+      reexecute_with(text_response("Hi! I'm FaceDanger Bot ☠"))
     end
   end
 end
