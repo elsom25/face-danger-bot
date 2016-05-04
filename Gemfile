@@ -1,8 +1,6 @@
 source "http://rubygems.org"
 
 gem "rails", "5.0.0.beta4"
-gem "foreman"
-gem "thin"
 gem "redis"
 
 gem "slim-rails"
@@ -22,6 +20,7 @@ end
 
 group :development, :test do
   gem "sqlite3"
+  gem "thin"
 
   gem "dotenv-rails"
 
