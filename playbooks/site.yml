@@ -21,7 +21,7 @@
     - name: set default PWD
       lineinfile: dest="/home/vagrant/.bashrc" line="cd {{ app_path }}" create=yes
 
-- name: deploy and configure rvm
+- name: deploy and configure rvm and redis
   hosts: all
   become: yes
   vars:
@@ -30,6 +30,7 @@
     rvm1_install_flags: "--auto-dotfiles"
   roles:
     - rvm_io.rvm1-ruby
+    - DavidWittman.redis
 
 - name: install rails dependencies
   hosts: all
