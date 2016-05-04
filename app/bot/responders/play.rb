@@ -8,7 +8,7 @@ module Responders
     end
 
     def handle
-      # MIXPANEL.track(user.username, "Play")
+      MIXPANEL.track(user.username, "Play")
       shots = chat_context.shots.to_i
       random = Random.new(timestamp + chat_id)
 
