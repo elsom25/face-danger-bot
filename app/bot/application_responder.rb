@@ -2,8 +2,7 @@ class ApplicationResponder < Bot::Responder
 protected
 
   def chat_context
-    @chat_contexts ||= {}
-    @chat_contexts[chat_id] ||= ChatContext.new(chat_id)
+    chat_contexts[chat_id] ||= ChatContext.new(chat_id)
   end
 
   def chat_id
@@ -23,5 +22,11 @@ protected
       "Yes!",
       "No"
     ]
+  end
+
+private
+
+  def chat_contexts
+    @chat_contexts ||= {}
   end
 end
