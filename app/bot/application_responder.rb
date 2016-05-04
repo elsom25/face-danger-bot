@@ -7,7 +7,11 @@ protected
   end
 
   def chat_id
-    message["chatId"]
+    message["chatId"].to_i
+  end
+
+  def timestamp
+    message["timestamp"].to_i
   end
 
   def default_response

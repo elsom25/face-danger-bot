@@ -1,6 +1,7 @@
 class ApplicationHandler < Bot::Handler
   use Responders::Reset
   use Responders::Introduction
+  use Responders::NewGame
   use Responders::Play
   use Responders::Default
 
