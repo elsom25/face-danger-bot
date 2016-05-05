@@ -1,7 +1,5 @@
 module Responders
   class Draw < ApplicationResponder
-    include ActionView::Helpers::TextHelper
-
     def can_handle?
       match_message(Game.actions.take_a_risk) && responses.blank?
     end

@@ -1,7 +1,5 @@
 module Responders
   class Score < ApplicationResponder
-    include ActionView::Helpers::TextHelper
-
     def can_handle?
       match_message(Game.actions.score) && responses.blank?
     end

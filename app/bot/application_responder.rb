@@ -1,4 +1,6 @@
 class ApplicationResponder < Bot::Responder
+  include ActionView::Helpers::TextHelper
+
 protected
 
   def chat_id

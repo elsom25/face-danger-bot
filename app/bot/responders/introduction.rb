@@ -1,6 +1,5 @@
 module Responders
   class Introduction < ApplicationResponder
-    include ActionView::Helpers::TextHelper
     respond_to "scan-data", "text", "link", "picture", "video", "sticker", "start-chatting"
 
     def can_handle?
