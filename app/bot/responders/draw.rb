@@ -16,7 +16,7 @@ module Responders
       if random.rand(Game::DRAWS - draws).zero?
         chat_context.game = nil
         user.lose_game!
-        reexecute_with(text_response("OMG! #{user.username} #{Game.bad_thing}"))
+        reexecute_with(text_response("OMG! #{user.username}#{Game.bad_thing}"))
       else
         chat_context.draws = draws += 1
         reexecute_with(text_response("PHEW! #{user.username} has avoided face danger! Only #{pluralize(Game::DRAWS - draws, 'draw')} left!"))
