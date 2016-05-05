@@ -10,9 +10,7 @@ module Responders
     end
 
     def handle
-      text_response("You ready?", [
-        "Pull the trigger!!!"
-      ])
+      text_response "You ready?", [Action::TAKE_A_RISK]
     end
   end
 end

@@ -4,7 +4,7 @@ module Responders
     ROUNDS = 6
 
     def can_handle?
-      match_message("Pull the trigger!!!") && responses.blank?
+      match_message(Action::TAKE_A_RISK) && responses.blank?
     end
 
     def handle

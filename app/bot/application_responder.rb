@@ -2,7 +2,7 @@ class ApplicationResponder < Bot::Responder
 protected
 
   def chat_context
-    chat_contexts[chat_id] ||= ChatContext.new(chat_id)
+    @chat_context ||= ChatContext.new(chat_id)
   end
 
   def chat_id
@@ -19,14 +19,8 @@ protected
 
   def default_responses
     [
-      "Yes!",
+      Action::BEGIN_GAME,
       "No"
     ]
-  end
-
-private
-
-  def chat_contexts
-    @chat_contexts ||= {}
   end
 end
