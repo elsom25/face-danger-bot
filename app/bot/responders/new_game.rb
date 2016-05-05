@@ -8,7 +8,7 @@ module Responders
       MIXPANEL.track(user.username, "New Game")
       chat_context.draws = 0
       chat_context.game = SecureRandom.uuid
-      text_response("Let's start our game of Face Danger 😰! There's only #{pluralize(Game::DRAWS, 'straw')}: may the odds be ever in your favour~", [
+      text_response("There's only #{pluralize(Game::DRAWS, 'straw')} left. Don't draw the short one!", [
         Game.actions.take_a_risk
       ])
     end

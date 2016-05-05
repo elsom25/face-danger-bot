@@ -16,10 +16,10 @@ module Responders
       if random.rand(Game::DRAWS - draws).zero?
         chat_context.game = nil
         user.lose_game!
-        reexecute_with(text_response("OMG! #{user.username}#{Game.bad_thing}"))
+        reexecute_with(text_response([Game.bad_exclamation, user.username, Game.bad_thing].join))
       else
         chat_context.draws = draws += 1
-        reexecute_with(text_response("PHEW! #{user.username} has avoided face danger! Only #{pluralize(Game::DRAWS - draws, 'draw')} left!"))
+        reexecute_with(text_response("#{Game.good_exclamation}#{user.username} is safe! Only #{pluralize(Game::DRAWS - draws, 'draw')} left!"))
       end
     end
 
