@@ -11,7 +11,7 @@ gem "turbolinks"
 gem "jquery-rails"
 gem "uglifier", ">= 1.3.0"
 
-gem "bot"
+gem "bot", "~> 0.0.43"
 gem "mixpanel-ruby"
 
 group :development do

@@ -7,7 +7,7 @@ module Responders
     def handle
       MIXPANEL.track(user.username, "New Game")
       chat_context.shots = 0
-      chat_context.playing = true
+      chat_context.game = SecureRandom.uuid
       text_response("Let's start our game of Face Danger 😰! There's only 6 shots loaded: may the odds be ever in your favour~", [
         Action::TAKE_A_RISK
       ])

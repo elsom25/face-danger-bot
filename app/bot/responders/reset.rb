@@ -5,6 +5,7 @@ module Responders
     end
 
     def handle
+      user_context.clear
       chat_context.clear
       user.destroy!
       text_response("Resetting...")

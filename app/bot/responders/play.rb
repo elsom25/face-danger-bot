@@ -6,7 +6,7 @@ module Responders
     ROUNDS = 6
 
     def can_handle?
-      chat_context.playing == true.to_s
+      chat_context.game.present?
     end
 
     def handle

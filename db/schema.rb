@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503232738) do
+ActiveRecord::Schema.define(version: 20160505142158) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.boolean  "introduced"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "games_played", default: 0, null: false
+    t.integer  "games_lost",   default: 0, null: false
     t.index ["username"], name: "index_users_on_username"
   end
 
