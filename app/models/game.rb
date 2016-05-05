@@ -2,7 +2,7 @@ class Game
   DRAWS = 6.freeze
   BAD_THINGS = [
     "was pantsed! 😱",
-    "got pie in the face! 🙃"
+    "got pied in the face! 🙃"
   ].freeze
 
   def self.actions
