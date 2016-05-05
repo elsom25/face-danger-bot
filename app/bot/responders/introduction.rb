@@ -10,7 +10,7 @@ module Responders
       user.update! introduced: true
       MIXPANEL.track(user.username, "Introduced")
 
-      reexecute_with(text_response("Hi! I'm Danger Straw. I run a risky game you can play with friends. There are #{pluralize(Game::DRAWS, 'straw')} that you take turns drawing. But hope you don't draw the short one, or something sooo not lit will happen to you!"))
+      reexecute_with(text_response("Hi! I'm Face Danger. I run a risky game you can play with friends. There are #{pluralize(Game::DRAWS, 'straw')} that you take turns drawing. But hope you don't draw the short one, or something sooo not lit will happen to you!"))
     end
   end
 end
