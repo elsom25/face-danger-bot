@@ -1,5 +1,9 @@
 class Game
   DRAWS = 6.freeze
+  BAD_THINGS = [
+    "was pantsed! 😱",
+    "got pie in the face! 🙃"
+  ].freeze
 
   def self.actions
     @@actions ||= OpenStruct.new({
@@ -7,5 +11,9 @@ class Game
       score: "How am I doing?",
       take_a_risk: "Draw a straw!!"
     })
+  end
+
+  def self.bad_thing
+    BAD_THINGS.sample
   end
 end
