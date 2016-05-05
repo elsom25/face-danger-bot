@@ -5,6 +5,7 @@ module Responders
     end
 
     def handle
+      MIXPANEL.track(user.username, "Check Score")
       reexecute_with [how_are_you_doing, score]
     end
 
