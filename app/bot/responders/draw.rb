@@ -1,27 +1,27 @@
 module Responders
-  class Shot < ApplicationResponder
+  class Draw < ApplicationResponder
     include ActionView::Helpers::TextHelper
-    ROUNDS = 6
 
     def can_handle?
-      match_message(Action::TAKE_A_RISK) && responses.blank?
+      match_message(Game.actions.take_a_risk) && responses.blank?
     end
 
     def handle
-      MIXPANEL.track(user.username, "Shot")
+      MIXPANEL.track(user.username, "Draw")
 
       register_game_play!
+      user.draw!
 
-      shots = chat_context.shots.to_i
+      draws = chat_context.draws.to_i
       random = Random.new(timestamp + chat_id)
 
-      if random.rand(ROUNDS - shots).zero?
+      if random.rand(Game::DRAWS - draws).zero?
         chat_context.game = nil
         user.lose_game!
-        reexecute_with(text_response("BAM! #{user.username} was shot! 😱"))
+        reexecute_with(text_response("OMG! #{user.username} was pantsed! 😱"))
       else
-        chat_context.shots = shots += 1
-        reexecute_with(text_response("PHEW! #{user.username} has avoided face danger! Only #{pluralize(ROUNDS - shots, 'shot')} left!"))
+        chat_context.draws = draws += 1
+        reexecute_with(text_response("PHEW! #{user.username} has avoided face danger! Only #{pluralize(Game::DRAWS - draws, 'draw')} left!"))
       end
     end
 

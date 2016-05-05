@@ -10,12 +10,13 @@ protected
   end
 
   def default_response
-    text_response("#{user.username} has played #{user.games_played} and lost #{user.games_lost}. Want to play a game?", default_responses)
+    text_response("Want to play a game?", default_responses)
   end
 
   def default_responses
     [
-      Action::BEGIN_GAME,
+      Game.actions.begin_game,
+      Game.actions.score,
       "No"
     ]
   end

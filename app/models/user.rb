@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
   def lose_game!
     increment! :games_lost
   end
+
+  def draw!
+    increment! :draws
+  end
+
+  def safe_draws
+    draws - games_lost
+  end
 end

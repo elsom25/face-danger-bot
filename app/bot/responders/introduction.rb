@@ -1,5 +1,6 @@
 module Responders
   class Introduction < ApplicationResponder
+    include ActionView::Helpers::TextHelper
     respond_to "scan-data", "text", "link", "picture", "video", "sticker", "start-chatting"
 
     def can_handle?
@@ -10,7 +11,7 @@ module Responders
       user.update! introduced: true
       MIXPANEL.track(user.username, "Introduced")
 
-      reexecute_with(text_response("Hi! I'm FaceDanger Bot ☠"))
+      reexecute_with(text_response("Hi! I'm Face Danger Bot ☠. I'm a dangerous game you can play with friends. There are #{pluralize(Game::DRAWS, 'straw')} that you take turns drawing. But hope you don't draw the short one, or something ~scary~ will happen to you!"))
     end
   end
 end

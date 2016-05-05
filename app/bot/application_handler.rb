@@ -1,13 +1,15 @@
 class ApplicationHandler < Bot::Handler
   use Responders::Reset
+  use Responders::Restart
 
   # game loop
-  use Responders::Shot
+  use Responders::Draw
   use Responders::Play
 
   # general messaging
   use Responders::Introduction
   use Responders::NewGame
+  use Responders::Score
   use Responders::Default
 
   def user_for(message)

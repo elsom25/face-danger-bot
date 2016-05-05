@@ -10,7 +10,7 @@ module Responders
     end
 
     def handle
-      text_response "You ready?", [Action::TAKE_A_RISK]
+      text_response "You ready?", [Game.actions.take_a_risk]
     end
   end
 end
